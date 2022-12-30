@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Stok_TakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Stok_Takip.dbo.kategoribilgileri' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="kategoribilgileri">
+          <Property Name="kategori" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Stok_Takip.dbo.markabilgileri' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="markabilgileri">
+          <Property Name="kategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="marka" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Stok_Takip.dbo.müşteri' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="müşteri">
+          <Key>
+            <PropertyRef Name="tc" />
+            <PropertyRef Name="adsoyad" />
+            <PropertyRef Name="telefon" />
+            <PropertyRef Name="adres" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="tc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Stok_Takip.dbo.urun' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="urun">
+          <Property Name="barkodno" Type="nvarchar" MaxLength="50" />
+          <Property Name="kategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="urunadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="miktari" Type="int" />
+          <Property Name="alisfiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="satisfiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tarih" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityContainer Name="Stok_TakipModelStoreContainer">
+          <EntitySet Name="müşteri" EntityType="Self.müşteri" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [müşteri].[tc] AS [tc], 
+    [müşteri].[adsoyad] AS [adsoyad], 
+    [müşteri].[telefon] AS [telefon], 
+    [müşteri].[adres] AS [adres], 
+    [müşteri].[email] AS [email]
+    FROM [dbo].[müşteri] AS [müşteri]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Stok_TakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="müşteri">
+          <Key>
+            <PropertyRef Name="tc" />
+            <PropertyRef Name="adsoyad" />
+            <PropertyRef Name="telefon" />
+            <PropertyRef Name="adres" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="tc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Stok_TakipEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="müşteri" EntityType="Self.müşteri" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Stok_TakipModelStoreContainer" CdmEntityContainer="Stok_TakipEntities">
+          <EntitySetMapping Name="müşteri">
+            <EntityTypeMapping TypeName="Stok_TakipModel.müşteri">
+              <MappingFragment StoreEntitySet="müşteri">
+                <ScalarProperty Name="tc" ColumnName="tc" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
